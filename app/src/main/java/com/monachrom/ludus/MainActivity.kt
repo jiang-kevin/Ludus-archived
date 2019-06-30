@@ -1,18 +1,23 @@
 package com.monachrom.ludus
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-
-import kotlinx.android.synthetic.main.activity_main.*
+import com.monachrom.ludus.fragment.SongFragment
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+
+        val transaction = supportFragmentManager.beginTransaction().apply {
+            replace(R.id.container, SongFragment.newInstance())
+        }
+
+        transaction.commitNow()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

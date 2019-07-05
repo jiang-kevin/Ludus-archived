@@ -25,13 +25,17 @@ class SongFragment : Fragment() {
     private lateinit var viewModel: SongViewModel
     private val viewAdapter = SongAdapter()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val factory = InjectorUtils.provideSongViewModelFactory()
+        viewModel = ViewModelProviders.of(this, factory).get(SongViewModel::class.java)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val factory = InjectorUtils.provideSongViewModelFactory()
-        viewModel = ViewModelProviders.of(this, factory).get(SongViewModel::class.java)
 
         return inflater.inflate(R.layout.fragment_song, container, false)
     }

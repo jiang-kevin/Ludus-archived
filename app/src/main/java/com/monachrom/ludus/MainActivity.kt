@@ -1,9 +1,11 @@
 package com.monachrom.ludus
 
+import android.Manifest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.app.ActivityCompat
 import com.monachrom.ludus.fragment.SongFragment
 
 class MainActivity : AppCompatActivity() {
@@ -13,10 +15,15 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+        // TODO: Actually implement this
+        ActivityCompat.requestPermissions(this,
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+            1)
+
+
         val transaction = supportFragmentManager.beginTransaction().apply {
             replace(R.id.container, SongFragment.newInstance())
         }
-
         transaction.commitNow()
     }
 

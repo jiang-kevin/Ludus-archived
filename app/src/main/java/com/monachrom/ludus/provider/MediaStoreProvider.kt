@@ -1,8 +1,9 @@
-package com.monachrom.ludus.data
+package com.monachrom.ludus.provider
 
 import android.database.Cursor
 import android.provider.MediaStore
 import com.monachrom.ludus.LudusApplication
+import com.monachrom.ludus.data.Song
 
 class MediaStoreProvider private constructor(): MediaProvider {
 
@@ -11,7 +12,8 @@ class MediaStoreProvider private constructor(): MediaProvider {
 
         fun getInstance(): MediaStoreProvider {
             return instance ?: synchronized(this) {
-                instance ?: MediaStoreProvider().also {instance = it}
+                instance
+                    ?: MediaStoreProvider().also { instance = it}
             }
         }
     }
@@ -20,19 +22,20 @@ class MediaStoreProvider private constructor(): MediaProvider {
         val songs = mutableListOf<Song>()
 
         val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
-        val proj = arrayOf(
+        val projection = arrayOf(
             MediaStore.Audio.AudioColumns.TITLE,
             MediaStore.Audio.AudioColumns.ARTIST,
             MediaStore.Audio.AudioColumns.ALBUM)
+        val orderBy = MediaStore.Audio.AudioColumns.TITLE
 
         val context = LudusApplication.getApplicationContext()
 
         val c: Cursor? = context.contentResolver.query(
             uri,
-            proj,
+            projection,
             null,
             null,
-            null)
+            orderBy)
 
         if (c != null) {
             while (c.moveToNext()) {

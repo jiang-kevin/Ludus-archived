@@ -1,6 +1,6 @@
-package com.monachrom.ludus.data
+package com.monachrom.ludus.provider
 
-import android.content.Context
+import com.monachrom.ludus.data.Song
 
 interface MediaProvider {
 

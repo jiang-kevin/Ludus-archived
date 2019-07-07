@@ -40,6 +40,10 @@ class PlayerFragment : Fragment() {
         button_play.setOnClickListener {
             mediaPlayer.playSong(args.songUri)
         }
+
+        button_pause.setOnClickListener {
+            mediaPlayer.pauseSong()
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

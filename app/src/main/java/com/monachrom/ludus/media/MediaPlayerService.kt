@@ -10,16 +10,28 @@ class MediaPlayerService : MediaService {
     val mediaPlayer = MediaPlayer()
 
     override fun playSong(uri: Uri) {
-        mediaPlayer.apply {
-            val audioAttributes = AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_MEDIA)
-                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                .build()
 
-            setAudioAttributes(audioAttributes)
-            setDataSource(LudusApplication.getApplicationContext(), uri)
-            prepare()
-            start()
+        if (!mediaPlayer.isPlaying) {
+            mediaPlayer.apply {
+                val audioAttributes = AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .build()
+
+                setAudioAttributes(audioAttributes)
+                setDataSource(LudusApplication.getApplicationContext(), uri)
+                prepare()
+                start()
+            }
+        }
+    }
+
+    override fun pauseSong() {
+        if (mediaPlayer.isPlaying) {
+            mediaPlayer.pause()
+        }
+        else {
+            mediaPlayer.start()
         }
     }
 }

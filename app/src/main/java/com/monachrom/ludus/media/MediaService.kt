@@ -8,4 +8,5 @@ import com.monachrom.ludus.LudusApplication
 interface MediaService {
 
     fun playSong(uri: Uri)
+    fun pauseSong()
 }

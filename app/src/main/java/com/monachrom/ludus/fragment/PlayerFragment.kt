@@ -12,6 +12,8 @@ import androidx.navigation.fragment.navArgs
 import com.monachrom.ludus.LudusApplication
 
 import com.monachrom.ludus.R
+import com.monachrom.ludus.media.MediaPlayerService
+import com.monachrom.ludus.media.MediaService
 import com.monachrom.ludus.viewmodel.PlayerViewModel
 import kotlinx.android.synthetic.main.fragment_player.*
 
@@ -23,6 +25,7 @@ class PlayerFragment : Fragment() {
 
     private lateinit var viewModel: PlayerViewModel
     val args: PlayerFragmentArgs by navArgs()
+    val mediaPlayer: MediaService = MediaPlayerService()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,17 +38,7 @@ class PlayerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         button_play.setOnClickListener {
-            val mediaPlayer: MediaPlayer? = MediaPlayer().apply {
-                val audioAttributes = AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_MEDIA)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                    .build()
-
-                setAudioAttributes(audioAttributes)
-                setDataSource(LudusApplication.getApplicationContext(), args.songUri)
-                prepare()
-                start()
-            }
+            mediaPlayer.playSong(args.songUri)
         }
     }
 

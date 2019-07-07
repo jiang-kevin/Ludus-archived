@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import com.monachrom.ludus.fragment.SongFragment
 
 class MainActivity : AppCompatActivity() {
@@ -19,12 +20,6 @@ class MainActivity : AppCompatActivity() {
         ActivityCompat.requestPermissions(this,
             arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
             1)
-
-
-        val transaction = supportFragmentManager.beginTransaction().apply {
-            replace(R.id.container, SongFragment.newInstance())
-        }
-        transaction.commitNow()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

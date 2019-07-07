@@ -3,9 +3,13 @@ package com.monachrom.ludus.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.monachrom.ludus.R
 import com.monachrom.ludus.data.Song
+import com.monachrom.ludus.fragment.PlayerFragment
+import com.monachrom.ludus.fragment.PlayerFragmentArgs
+import com.monachrom.ludus.fragment.SongFragmentDirections
 import kotlinx.android.synthetic.main.item_song.view.*
 
 class SongAdapter(): RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
@@ -27,6 +31,11 @@ class SongAdapter(): RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
         holder.songView.subtext1.text = song.album
         holder.songView.subtext2.text = song.artist
         holder.songView.subtext3.text = song.albumArtist
+
+        holder.songView.setOnClickListener {
+            val action = SongFragmentDirections.playSong(song.uri)
+            it.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

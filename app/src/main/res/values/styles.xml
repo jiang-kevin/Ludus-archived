@@ -9,4 +9,8 @@
 
     </style>
 
+    <!--  For the sake of xml preview not breaking  -->
+    <style name="UnelevatedButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+    </style>
+
 </resources>

@@ -1,19 +1,19 @@
-package com.monachrom.ludus.provider
+package com.monachrom.ludus.data
 
 import android.database.Cursor
+import android.net.Uri
 import android.provider.MediaStore
 import com.monachrom.ludus.LudusApplication
-import com.monachrom.ludus.data.Song
 
-class MediaStoreProvider private constructor(): MediaProvider {
+class MediaStoreDao private constructor(): MediaDao {
 
     companion object {
-        @Volatile private var instance: MediaStoreProvider? = null
+        @Volatile private var instance: MediaStoreDao? = null
 
-        fun getInstance(): MediaStoreProvider {
+        fun getInstance(): MediaStoreDao {
             return instance ?: synchronized(this) {
                 instance
-                    ?: MediaStoreProvider().also { instance = it}
+                    ?: MediaStoreDao().also { instance = it}
             }
         }
     }
@@ -21,20 +21,25 @@ class MediaStoreProvider private constructor(): MediaProvider {
     override fun getAllSongsFromDevice(): List<Song> {
         val songs = mutableListOf<Song>()
 
-        val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+        val tableUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+
         val projection = arrayOf(
             MediaStore.Audio.AudioColumns.TITLE,
             MediaStore.Audio.AudioColumns.ARTIST,
-            MediaStore.Audio.AudioColumns.ALBUM)
+            MediaStore.Audio.AudioColumns.ALBUM,
+            MediaStore.MediaColumns._ID)
+
+        val selectionClause: String? = null
+        val selectionArgs: Array<String> = emptyArray()
         val orderBy = MediaStore.Audio.AudioColumns.TITLE
 
         val context = LudusApplication.getApplicationContext()
 
         val c: Cursor? = context.contentResolver.query(
-            uri,
+            tableUri,
             projection,
-            null,
-            null,
+            selectionClause,
+            selectionArgs,
             orderBy)
 
         if (c != null) {
@@ -42,8 +47,10 @@ class MediaStoreProvider private constructor(): MediaProvider {
                 val title = c.getString(0)
                 val artist = c.getString(1)
                 val album = c.getString(2)
+                val uriStr = c.getString(3)
+                val songUri = Uri.withAppendedPath(tableUri, uriStr)
 
-                val newSong = Song(title, artist, album, artist)
+                val newSong = Song(title, artist, album, artist, songUri)
                 songs.add(newSong)
             }
             c.close()

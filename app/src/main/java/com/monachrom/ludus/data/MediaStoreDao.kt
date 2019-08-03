@@ -5,18 +5,7 @@ import android.net.Uri
 import android.provider.MediaStore
 import com.monachrom.ludus.LudusApplication
 
-class MediaStoreDao private constructor(): MediaDao {
-
-    companion object {
-        @Volatile private var instance: MediaStoreDao? = null
-
-        fun getInstance(): MediaStoreDao {
-            return instance ?: synchronized(this) {
-                instance
-                    ?: MediaStoreDao().also { instance = it}
-            }
-        }
-    }
+class MediaStoreDao: MusicDao {
 
     override fun getAllSongsFromDevice(): List<Song> {
         val songs = mutableListOf<Song>()
@@ -34,7 +23,7 @@ class MediaStoreDao private constructor(): MediaDao {
         val selectionArgs: Array<String> = emptyArray()
         val orderBy = MediaStore.Audio.AudioColumns.TITLE
 
-        val context = LudusApplication.getApplicationContext()
+        val context = LudusApplication.get()
 
         val c: Cursor? = context.contentResolver.query(
             tableUri,

@@ -19,7 +19,7 @@ class MediaPlayerService : MediaService {
                     .build()
 
                 setAudioAttributes(audioAttributes)
-                setDataSource(LudusApplication.getApplicationContext(), uri)
+                setDataSource(LudusApplication.get(), uri)
                 prepare()
                 start()
             }

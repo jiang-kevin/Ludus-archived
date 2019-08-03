@@ -1,8 +1,7 @@
 package com.monachrom.ludus.di
 
-import com.monachrom.ludus.data.MediaDao
+import com.monachrom.ludus.data.MusicDao
 import com.monachrom.ludus.data.MediaStoreDao
-import com.monachrom.ludus.data.SongRepository
 import dagger.Module
 import dagger.Provides
 
@@ -10,13 +9,7 @@ import dagger.Provides
 class MusicModule {
 
     @Provides
-    fun mediaDao(): MediaDao {
-        return MediaStoreDao.getInstance()
+    fun mediaDao(): MusicDao {
+        return MediaStoreDao()
     }
-
-    @Provides
-    fun songRepository(mediaDao: MediaDao): SongRepository {
-        return SongRepository(mediaDao)
-    }
-
 }

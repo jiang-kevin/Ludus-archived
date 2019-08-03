@@ -2,7 +2,7 @@ package com.monachrom.ludus.data
 
 import com.monachrom.ludus.data.Song
 
-interface MediaDao {
+interface MusicDao {
 
     fun getAllSongsFromDevice(): List<Song>
 }

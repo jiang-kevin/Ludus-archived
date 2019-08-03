@@ -1,4 +1,4 @@
-package com.monachrom.ludus.util
+package com.monachrom.ludus.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

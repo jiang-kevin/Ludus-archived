@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SongRepository @Inject constructor(private val provider: MediaDao) {
+class SongRepository @Inject constructor(private val provider: MusicDao) {
 
     fun getSongs(): LiveData<List<Song>> {
         val songs = provider.getAllSongsFromDevice()

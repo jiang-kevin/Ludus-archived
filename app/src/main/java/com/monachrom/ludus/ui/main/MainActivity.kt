@@ -1,4 +1,4 @@
-package com.monachrom.ludus
+package com.monachrom.ludus.ui.main
 
 import android.Manifest
 import android.os.Bundle
@@ -6,8 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.Fragment
-import com.monachrom.ludus.fragment.SongFragment
+import com.monachrom.ludus.R
 
 class MainActivity : AppCompatActivity() {
 

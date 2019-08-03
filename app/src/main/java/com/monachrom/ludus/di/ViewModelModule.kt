@@ -2,8 +2,7 @@ package com.monachrom.ludus.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.monachrom.ludus.viewmodel.LudusViewModelFactory
-import com.monachrom.ludus.viewmodel.SongViewModel
+import com.monachrom.ludus.ui.song.SongViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

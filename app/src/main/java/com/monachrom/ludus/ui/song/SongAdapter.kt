@@ -1,4 +1,4 @@
-package com.monachrom.ludus.adapter
+package com.monachrom.ludus.ui.song
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.monachrom.ludus.R
-import com.monachrom.ludus.data.Song
-import com.monachrom.ludus.fragment.PlayerFragment
-import com.monachrom.ludus.fragment.PlayerFragmentArgs
+import com.monachrom.ludus.model.Song
 import com.monachrom.ludus.fragment.SongFragmentDirections
 import kotlinx.android.synthetic.main.item_song.view.*
 

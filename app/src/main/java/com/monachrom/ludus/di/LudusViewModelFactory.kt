@@ -1,4 +1,4 @@
-package com.monachrom.ludus.viewmodel
+package com.monachrom.ludus.di
 
 
 import androidx.lifecycle.ViewModel

@@ -1,6 +1,6 @@
-package com.monachrom.ludus.viewmodel
+package com.monachrom.ludus.ui.player
 
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel
 
 class PlayerViewModel : ViewModel() {
     // TODO: Implement the ViewModel

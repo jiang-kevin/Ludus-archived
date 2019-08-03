@@ -2,6 +2,7 @@ package com.monachrom.ludus.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.monachrom.ludus.model.Song
 import javax.inject.Inject
 import javax.inject.Singleton
 

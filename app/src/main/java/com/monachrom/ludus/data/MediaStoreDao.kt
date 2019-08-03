@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.net.Uri
 import android.provider.MediaStore
 import com.monachrom.ludus.LudusApplication
+import com.monachrom.ludus.model.Song
 
 class MediaStoreDao: MusicDao {
 

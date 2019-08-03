@@ -1,4 +1,4 @@
-package com.monachrom.ludus.media
+package com.monachrom.ludus.service
 
 import android.media.AudioAttributes
 import android.media.MediaPlayer

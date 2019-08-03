@@ -1,6 +1,6 @@
 package com.monachrom.ludus.data
 
-import com.monachrom.ludus.data.Song
+import com.monachrom.ludus.model.Song
 
 interface MusicDao {
 

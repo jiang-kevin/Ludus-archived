@@ -1,7 +1,5 @@
-package com.monachrom.ludus.fragment
+package com.monachrom.ludus.ui.player
 
-import android.media.AudioAttributes
-import android.media.MediaPlayer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,12 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import com.monachrom.ludus.LudusApplication
 
 import com.monachrom.ludus.R
-import com.monachrom.ludus.media.MediaPlayerService
-import com.monachrom.ludus.media.MediaService
-import com.monachrom.ludus.viewmodel.PlayerViewModel
+import com.monachrom.ludus.fragment.PlayerFragmentArgs
+import com.monachrom.ludus.service.MediaPlayerService
+import com.monachrom.ludus.service.MediaService
 import kotlinx.android.synthetic.main.fragment_player.*
 
 class PlayerFragment : Fragment() {

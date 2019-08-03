@@ -2,13 +2,15 @@ package com.monachrom.ludus.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.monachrom.ludus.model.Song
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class SongRepository(private val provider: MediaDao) {
+@Singleton
+class SongRepository @Inject constructor(private val provider: MusicDao) {
 
     fun getSongs(): LiveData<List<Song>> {
         val songs = provider.getAllSongsFromDevice()
-        val liveSongs = MutableLiveData<List<Song>>()
-        liveSongs.value = songs
-        return liveSongs
+        return MutableLiveData(songs)
     }
 }

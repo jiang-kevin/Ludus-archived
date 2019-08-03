@@ -1,4 +1,4 @@
-package com.monachrom.ludus.fragment
+package com.monachrom.ludus.ui.song
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -7,14 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 import com.monachrom.ludus.R
-import com.monachrom.ludus.adapter.SongAdapter
-import com.monachrom.ludus.util.InjectorUtils
-import com.monachrom.ludus.viewmodel.SongViewModel
+import com.monachrom.ludus.di.Injector
 import kotlinx.android.synthetic.main.fragment_song.*
+import javax.inject.Inject
 
 class SongFragment : Fragment() {
 
@@ -22,14 +21,19 @@ class SongFragment : Fragment() {
         fun newInstance() = SongFragment()
     }
 
-    private lateinit var viewModel: SongViewModel
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
+
+    private val viewModel: SongViewModel by lazy {
+        ViewModelProviders.of(this, factory)[SongViewModel::class.java]
+    }
+
     private val viewAdapter = SongAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val factory = InjectorUtils.provideSongViewModelFactory()
-        viewModel = ViewModelProviders.of(this, factory).get(SongViewModel::class.java)
+        factory = Injector.get().viewModelFactory()
     }
 
     override fun onCreateView(

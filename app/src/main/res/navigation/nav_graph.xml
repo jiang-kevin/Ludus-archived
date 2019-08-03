@@ -4,11 +4,11 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
             app:startDestination="@id/songFragment">
 
-    <fragment android:id="@+id/songFragment" android:name="com.monachrom.ludus.fragment.SongFragment"
+    <fragment android:id="@+id/songFragment" android:name="com.monachrom.ludus.ui.song.SongFragment"
               android:label="fragment_song" tools:layout="@layout/fragment_song">
         <action android:id="@+id/play_song" app:destination="@id/playerFragment"/>
     </fragment>
-    <fragment android:id="@+id/playerFragment" android:name="com.monachrom.ludus.fragment.PlayerFragment"
+    <fragment android:id="@+id/playerFragment" android:name="com.monachrom.ludus.ui.player.PlayerFragment"
               android:label="fragment_player" tools:layout="@layout/fragment_player">
         <argument android:name="songUri" app:argType="android.net.Uri"/>
     </fragment>

@@ -1,4 +1,4 @@
-package com.monachrom.ludus.media
+package com.monachrom.ludus.service
 
 import android.media.AudioAttributes
 import android.media.MediaPlayer
@@ -19,7 +19,7 @@ class MediaPlayerService : MediaService {
                     .build()
 
                 setAudioAttributes(audioAttributes)
-                setDataSource(LudusApplication.getApplicationContext(), uri)
+                setDataSource(LudusApplication.get(), uri)
                 prepare()
                 start()
             }

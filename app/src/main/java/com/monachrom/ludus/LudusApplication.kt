@@ -1,7 +1,8 @@
 package com.monachrom.ludus
 
 import android.app.Application
-import android.content.Context
+import com.monachrom.ludus.data.SongRepository
+import com.monachrom.ludus.di.DaggerAppComponent
 
 class LudusApplication : Application() {
 
@@ -13,8 +14,16 @@ class LudusApplication : Application() {
         }
     }
 
+    private lateinit var songRepository: SongRepository
+
     override fun onCreate() {
         super.onCreate()
+
+        val component = DaggerAppComponent.builder()
+            .build()
+
+        songRepository = component.provideSongRepository()
+
         instance = this
     }
 }

@@ -27,6 +27,7 @@ class MediaStoreDao private constructor(): MediaDao {
             MediaStore.Audio.AudioColumns.TITLE,
             MediaStore.Audio.AudioColumns.ARTIST,
             MediaStore.Audio.AudioColumns.ALBUM,
+            MediaStore.Audio.AudioColumns.ALBUM_ID,
             MediaStore.MediaColumns._ID)
 
         val selectionClause: String? = null
@@ -47,10 +48,11 @@ class MediaStoreDao private constructor(): MediaDao {
                 val title = c.getString(0)
                 val artist = c.getString(1)
                 val album = c.getString(2)
-                val uriStr = c.getString(3)
+                val albumId = c.getString(3)
+                val uriStr = c.getString(4)
                 val songUri = Uri.withAppendedPath(tableUri, uriStr)
 
-                val newSong = Song(title, artist, album, artist, songUri)
+                val newSong = Song(title, artist, album, albumId, artist, songUri)
                 songs.add(newSong)
             }
             c.close()
@@ -58,4 +60,6 @@ class MediaStoreDao private constructor(): MediaDao {
 
         return songs
     }
+
+
 }

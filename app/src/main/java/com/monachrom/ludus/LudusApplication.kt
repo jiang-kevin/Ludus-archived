@@ -3,6 +3,7 @@ package com.monachrom.ludus
 import android.app.Application
 import com.monachrom.ludus.data.SongRepository
 import com.monachrom.ludus.di.AppComponent
+import com.monachrom.ludus.di.ContextModule
 import com.monachrom.ludus.di.DaggerAppComponent
 
 class LudusApplication : Application() {
@@ -17,6 +18,7 @@ class LudusApplication : Application() {
 
     val component: AppComponent by lazy {
         DaggerAppComponent.builder()
+            .contextModule(ContextModule(this))
             .build()
     }
 

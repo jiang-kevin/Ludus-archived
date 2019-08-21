@@ -50,6 +50,4 @@ class MediaStoreDao @Inject constructor(private val contentResolver: ContentReso
 
         return songs
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.monachrom.ludus.di
 
+import android.content.ContentResolver
 import com.monachrom.ludus.data.MusicDao
 import com.monachrom.ludus.data.MediaStoreDao
 import dagger.Module
@@ -11,7 +12,7 @@ class MusicModule {
 
     @Provides
     @Singleton
-    fun mediaDao(): MusicDao {
-        return MediaStoreDao()
+    fun mediaDao(contentResolver: ContentResolver): MusicDao {
+        return MediaStoreDao(contentResolver)
     }
 }

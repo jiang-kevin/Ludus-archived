@@ -1,12 +1,14 @@
 package com.monachrom.ludus.data
 
+import android.content.ContentResolver
 import android.database.Cursor
 import android.net.Uri
 import android.provider.MediaStore
 import com.monachrom.ludus.LudusApplication
 import com.monachrom.ludus.model.Song
+import javax.inject.Inject
 
-class MediaStoreDao: MusicDao {
+class MediaStoreDao @Inject constructor(private val contentResolver: ContentResolver): MusicDao {
 
     override fun getAllSongsFromDevice(): List<Song> {
         val songs = mutableListOf<Song>()
@@ -24,9 +26,7 @@ class MediaStoreDao: MusicDao {
         val selectionArgs: Array<String> = emptyArray()
         val orderBy = MediaStore.Audio.AudioColumns.TITLE
 
-        val context = LudusApplication.get()
-
-        val c: Cursor? = context.contentResolver.query(
+        val c: Cursor? = contentResolver.query(
             tableUri,
             projection,
             selectionClause,
@@ -50,6 +50,4 @@ class MediaStoreDao: MusicDao {
 
         return songs
     }
-
-
 }

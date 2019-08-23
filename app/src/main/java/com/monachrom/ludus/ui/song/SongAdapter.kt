@@ -7,7 +7,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.monachrom.ludus.R
 import com.monachrom.ludus.model.Song
-import com.monachrom.ludus.fragment.SongFragmentDirections
 import kotlinx.android.synthetic.main.item_song.view.*
 
 class SongAdapter(): RecyclerView.Adapter<SongAdapter.SongViewHolder>() {

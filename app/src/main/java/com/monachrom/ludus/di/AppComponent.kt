@@ -10,10 +10,13 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
+        ContextModule::class,
         ViewModelModule::class,
         MusicModule::class]
 )
 interface AppComponent {
 
     fun viewModelFactory(): ViewModelProvider.Factory
+
+    
 }

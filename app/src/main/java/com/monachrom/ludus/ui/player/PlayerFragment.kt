@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 
 import com.monachrom.ludus.R
-import com.monachrom.ludus.fragment.PlayerFragmentArgs
 import com.monachrom.ludus.service.MediaPlayerService
 import com.monachrom.ludus.service.MediaService
 import kotlinx.android.synthetic.main.fragment_player.*
@@ -21,8 +20,8 @@ class PlayerFragment : Fragment() {
     }
 
     private lateinit var viewModel: PlayerViewModel
-    val args: PlayerFragmentArgs by navArgs()
-    val mediaPlayer: MediaService = MediaPlayerService()
+    private val args: PlayerFragmentArgs by navArgs()
+    private val mediaPlayer: MediaService = MediaPlayerService()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
